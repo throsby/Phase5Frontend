@@ -1,0 +1,171 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.Header {
+  vertical-align: middle;
+  background-color: #ccd8f4;
+  height: max(200px, 20vh);
+}
+
+.Header > h1 {
+  padding: 40px 0;
+  font-family: "Macondo", cursive;
+  font-size: 100px;
+  text-align: center;
+}
+
+.Header > h1:hover {
+  color: rgb(21, 65, 2);
+  transition: .5s;
+}
+
+.TowerBox {
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+  flex-wrap: wrap;
+  max-width: calc(13 * 73.5px);
+  gap: 2%;
+  margin: 5% 0% 0% 8%;
+  border: 2%;
+  width: 100%;
+  height: 60vh;
+}
+
+
+.TowerStack {
+  border: black solid 1px;
+  border-radius: 5px;
+  height: 288px;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: center;
+  position: relative;
+}
+
+.helpers {
+  position: relative;
+  top: 140px;
+}
+
+.Plot {
+  /* Total leg-length is 35px + 4px + 30px = 70px */
+  height: 35px;
+  width: 35px;
+  /* background-color: #618ffb; */
+  /* background-color: white; */
+  
+  border: 1px solid #618ffb;
+  margin: 4px;
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  align-items: center;
+  position: relative;
+  /* bottom: ; */
+}
+
+.Plot.wateringcan:hover {
+  cursor: url(../public/Watering\ Can18px.png), pointer;
+  background: #90a8df;
+  transition: all 1s;
+}
+
+.Plot.sample:hover {
+  cursor: url(../public/Dropper17px.png),pointer;
+  background: #90a8df;
+  transition: all 1s;
+}
+
+h4 {
+  display: none;
+  transition: 2s;
+}
+
+.Plot:hover h4 {
+  display: block;
+  transition: all 2s;
+}
+
+.Plot.green-me {
+  background-color: rgb(78, 130, 1);
+}
+
+.AddTower {
+  height: 35.5px;
+  width: 35.5px;
+  background-color: #618ffb;
+  position: relative;
+  top: 20px;
+  text-align: center;
+  border-radius: 100%;  
+  border: 1px solid black;
+}
+
+.AddTower:hover {
+  cursor: pointer;
+  background-color: #ccd8f4;
+  transition: .5s;
+}
+
+.SubtractTower {
+  height: 35.5px;
+  width: 35.5px;
+  background-color: #618ffb;
+  position: relative;
+  top: 55px;
+  text-align: center;
+  border-radius: 100%;
+  border: 1px solid black;
+}
+
+.SubtractTower:hover {
+  cursor: pointer;
+  background-color: #ccd8f4;
+  transition: .5s;
+}
+
+.harvest-plant {
+  position: absolute;
+  height: 35.5px;
+  width: 35.5px;
+  border-radius: 100%;
+  text-align: center;
+  background-color: #ccd8f4;
+  top: -120px;
+  border: 1px solid black;
+}
+
+.harvest-plant:hover {
+  cursor: pointer;
+  background-color: #618ffb;
+  transition: .5s;
+}
+
+.water-dry {
+  position: absolute;
+  height: 35.5px;
+  width: 35.5px;
+  border-radius: 100%;
+  text-align: center;
+  background-color: #ccd8f4;
+  /* left: -55px;*/
+  top: -50px;
+  /* top: 100%; */
+  border: 1px solid black;
+}
+
+.water-dry:hover {
+  cursor: pointer;
+  background-color: #618ffb;
+  transition: .5s;
+}
+
+.snapLeft {
+  position: absolute;
+  left: 85px;
+  top: 435px;
+}
