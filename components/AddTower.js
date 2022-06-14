@@ -7,12 +7,13 @@ function AddTower({ setTowers }) {
                 "Content-Type": "application/json"
             }
         }
-        let req = await fetch("http://localhost:9292/add_tower", config)
+        let req = await fetch("http://localhost:3000/towers", config)
         let res = await req.json()
         // console.log(res)
         // setTowers((prevTowers) => {return Object.assign(prevTowers, res)})
+        console.log(res)
         setTowers((prevTowers) => { return {...prevTowers, ...res} })
-    }   
+    }
 
 return (
     <div className="AddTower">

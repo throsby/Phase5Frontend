@@ -4,6 +4,9 @@ import AddTower from "./AddTower"
 import SubtractTower from "./SubtractTower"
 import WaterDry from "./WaterDry"
 import HarvestPlant from "./HarvestPlant"
+import useSWR from "swr"
+
+
 
 function TowerBox() {
     const [towers, setTowers] = useState({})
@@ -11,6 +14,7 @@ function TowerBox() {
     const [harvestPlant, setHarvestPlant] = useState(true)
     const [time, setTime] = useState(0)
 
+   
 
     useEffect(()=>{
         let interval = setInterval(()=> {
@@ -19,15 +23,20 @@ function TowerBox() {
         return () => clearInterval(interval)
     },[])
 
-    // useEffect(() => {
-    //     async function fetchData() {
-    //         let req = await fetch("http://localhost:9292/towers")
-    //         let res = await req.json()
-    //         setTowers(res)
-           
-    //     }
-    //     fetchData()
-    // }, [])
+    useEffect(() => {
+     async function fetchData() {
+        let req = await fetch("http://localhost:3000/towerplots/")
+        let res = await req.json()
+        console.log("Towers:",res)
+        setTowers(res)
+        }
+        fetchData()
+    }, [])
+
+    // const { data, error } = useSWR("http://localhost:3000/towers",fetchData)
+    // console.log(data)
+    // console.log(error)
+
 
     return (
         <div style={{ "--towers": Object.keys(towers).length }} className="TowerBox">
@@ -38,6 +47,7 @@ function TowerBox() {
                 <SubtractTower setTowers={setTowers} />
             </div>
             {Object.values(towers).map((tower,i) => {
+                // {console.log("gosh",tower)}
                 return <Tower key={i} tower={[tower, i]} waterDry={waterDry} harvestPlant={harvestPlant} time={time}/>
             })}
         </div>
