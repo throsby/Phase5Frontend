@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
 import Tower from "./Tower"
-import AddTower from "./AddTower"
-import SubtractTower from "./SubtractTower"
-import WaterDry from "./WaterDry"
-import HarvestPlant from "./HarvestPlant"
-import useSWR from "swr"
+import AddTower from "./TowerUtilities/AddTower"
+import SubtractTower from "./TowerUtilities/SubtractTower"
+import WaterDry from "./TowerUtilities/WaterDry"
+import HarvestPlant from "./TowerUtilities/HarvestPlant"
 
+import { useTransition, animated } from 'react-spring'
 
 
 function TowerBox() {
@@ -14,7 +14,6 @@ function TowerBox() {
     const [harvestPlant, setHarvestPlant] = useState(true)
     const [time, setTime] = useState(0)
 
-   
 
     useEffect(()=>{
         let interval = setInterval(()=> {
@@ -33,23 +32,20 @@ function TowerBox() {
         fetchData()
     }, [])
 
-    // const { data, error } = useSWR("http://localhost:3000/towers",fetchData)
-    // console.log(data)
-    // console.log(error)
-
-
     return (
         <div style={{ "--towers": Object.keys(towers).length }} className="TowerBox">
-            <div className={"helpers"}>
+            <div className={"helpers"}> 
                 <HarvestPlant setHarvestPlant={setHarvestPlant} harvestPlant={harvestPlant}/>
                 <WaterDry setWaterDry={setWaterDry} waterDry={waterDry} />
                 <AddTower setTowers={setTowers} />
                 <SubtractTower setTowers={setTowers} />
             </div>
+            
             {Object.values(towers).map((tower,i) => {
                 // {console.log("gosh",tower)}
                 return <Tower key={i} tower={[tower, i]} waterDry={waterDry} harvestPlant={harvestPlant} time={time}/>
             })}
+            
         </div>
     )
 }

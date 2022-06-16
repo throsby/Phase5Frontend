@@ -11,15 +11,15 @@ function AddTower({ setTowers }) {
         let res = await req.json()
         // console.log(res)
         // setTowers((prevTowers) => {return Object.assign(prevTowers, res)})
-        console.log(res)
+        console.log("Added Tower: ",res)
         setTowers((prevTowers) => { return {...prevTowers, ...res} })
     }
 
-return (
-    <div className="AddTower">
-        <h2 onClick={createTower}> + </h2> 
-    </div>
-)
+    return (
+        <div className="AddTower">
+            <h2 onClick={createTower}> + </h2> 
+        </div>
+    )
 
 }
 

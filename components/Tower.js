@@ -2,11 +2,11 @@ import Plot from "./Plot";
 
 
 function Tower({tower: [tower, towerIndex], waterDry, harvestPlant, time}) {
-    console.log(tower)
+    // console.log(tower)
     return ( 
         <div className={`TowerStack`}>
-            {tower["plots"].map((plot,i) => {
-                // {console.log("What even is plot",plot)}
+
+            {Object.values(tower).map((plot,i) => {
                 return <Plot key={i} plot={[plot, i]} waterDry={waterDry} harvestPlant={harvestPlant}
                 time={time}/>
             })}
