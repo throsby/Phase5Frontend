@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react"
-import Tower from "./Tower"
-import AddTower from "./TowerUtilities/AddTower"
-import SubtractTower from "./TowerUtilities/SubtractTower"
-import WaterDry from "./TowerUtilities/WaterDry"
-import HarvestPlant from "./TowerUtilities/HarvestPlant"
+import Tower from "../TowerBoxComponents/Tower"
+import AddTower from "../TowerUtilities/AddTower"
+import SubtractTower from "../TowerUtilities/SubtractTower"
+import WaterDry from "../TowerUtilities/WaterDry"
+import HarvestPlant from "../TowerUtilities/HarvestPlant"
 
 import { useTransition, animated } from 'react-spring'
 
 
-function TowerBox() {
-    const [towers, setTowers] = useState({})
+function TowerBox({states}) {
+    // const [towers, setTowers] = useState({})
+    let towers = states[0]
+    let setTowers = states[1]
     const [waterDry, setWaterDry] = useState(true)
     const [harvestPlant, setHarvestPlant] = useState(true)
     const [time, setTime] = useState(0)
@@ -22,15 +24,15 @@ function TowerBox() {
         return () => clearInterval(interval)
     },[])
 
-    useEffect(() => {
-     async function fetchData() {
-        let req = await fetch("http://localhost:3000/towerplots/")
-        let res = await req.json()
-        console.log("Towers:",res)
-        setTowers(res)
-        }
-        fetchData()
-    }, [])
+    // useEffect(() => {
+    //  async function fetchData() {
+    //     let req = await fetch("http://localhost:3000/towerplots/")
+    //     let res = await req.json()
+    //     console.log("Towers:",res)
+    //     setTowers(res)
+    //     }
+    //     fetchData()
+    // }, [])
 
     return (
         <div style={{ "--towers": Object.keys(towers).length }} className="TowerBox">
@@ -45,7 +47,7 @@ function TowerBox() {
                 // {console.log("gosh",tower)}
                 return <Tower key={i} tower={[tower, i]} waterDry={waterDry} harvestPlant={harvestPlant} time={time}/>
             })}
-            
+
         </div>
     )
 }

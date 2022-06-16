@@ -1,4 +1,4 @@
-import Plot from "./Plot";
+import Plot from "./PlotComponents/Plot"
 
 
 function Tower({tower: [tower, towerIndex], waterDry, harvestPlant, time}) {

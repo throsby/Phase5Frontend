@@ -1,6 +1,10 @@
 function StatBox() {
     // return()
-    return null
+    return(
+    <div>
+        
+    </div>
+    )
 }
 
 export default StatBox
