@@ -6,7 +6,6 @@ function Plot({plot: [plot, plotIndex], waterDry, harvestPlant, time}) {
     const [plotMaturity, setPlotMaturity] = useState(0)
     const [change, setChange] = useState(true)
     
-    
     async function waterPlants() {        
         let config = {
             method: "PATCH",
@@ -37,24 +36,22 @@ function Plot({plot: [plot, plotIndex], waterDry, harvestPlant, time}) {
         setPlotState(res)
     }
     
-    useEffect(()=> {
+    useEffect(() => {
         // console.log("In UE:",plot.water_level, plotMaturity)
-        if (plot.water_level > 0.0 && plotMaturity <= 10) {
-            setPlotMaturity((prevMaturity => prevMaturity + 1.0*(plot.water_level + 0.1).toFixed(1)))
+        if (plotState.water_level > 0.0 && plotMaturity <= 10) {
+            setPlotMaturity((prevMaturity => prevMaturity + 1.0*(plotState.water_level + 0.1).toFixed(1)))
             // console.log(plotMaturity, ((plot.water_level)).toString())
     }},[time])
-    
 
     let waterSample = waterDry ? "wateringcan" : "sample"
     
     let popGreen = plotMaturity >= 10 ? "green-me" : ""
-    // console.log("PLOT", plotState)
     
     return(
         <div onClick={waterDry ? waterPlants : takeWaterSample} style={{ "borderRadius": (plotIndex % 2 == 1 ? "25px 5px 3px 3px" : "5px 25px 3px 3px" ), "margin": (plotIndex % 2 == 1 ? "4px 2px 4px 8px" : "4px 8px 4px 2px") }} className={`Plot tower-${plotState.tower_id} plot-$ ${waterSample} ${popGreen}`}> 
             {/* h4 has the hover css */}
             {/* <h6>{plotState.plot_number} - {plotState.water_level.toFixed(1)}</h6> */}
-            <h6>{plotMaturity}</h6>
+            <h6>{time}</h6>
             <h4> {plotState.water_level.toFixed(1)}</h4>
         </div>
     )

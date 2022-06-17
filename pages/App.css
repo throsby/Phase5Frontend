@@ -169,3 +169,29 @@ h4 {
   left: 85px;
   top: 435px;
 }
+
+div.greenhouse {
+  position: absolute;
+  top: 17em;
+  left: 5em;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  height: 14.1em;
+  width: 25em;
+  display: grid;
+  background-color: #b0d7d6;
+  border: #b0d7d6 .02em solid;
+  opacity: 90%;
+  pointer-events: none;
+}
+
+div.glasspane {
+  height: 7em;
+  width: 3em;
+  pointer-events: auto;
+  cursor: pointer;
+  border: black .05em solid;
+}
+
+div.greenhouse:hover {
+  box-shadow: 10px 10px #b0d7d6
+}

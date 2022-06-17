@@ -3,9 +3,6 @@ import Plot from "./PlotComponents/Plot"
 
 function Tower({tower, waterDry, harvestPlant, time}) {
 
-    console.log(tower)
-
-
     // console.log(tower)
     return ( 
         <div className={`TowerStack`}>
