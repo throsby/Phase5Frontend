@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 
 function Plot({plot: [plot, plotIndex], waterDry, harvestPlant, time}) {
-    console.log("Plot render")
+    // console.log("Plot render")
     const [plotState, setPlotState] = useState(plot)
     const [plotMaturity, setPlotMaturity] = useState(0)
     const [change, setChange] = useState(true)
     
     
-    async function waterPlants() {    
-        
-        
+    async function waterPlants() {        
         let config = {
             method: "PATCH",
             headers: {
@@ -27,7 +25,6 @@ function Plot({plot: [plot, plotIndex], waterDry, harvestPlant, time}) {
     }
 
     async function takeWaterSample() {
-        
         let config = {
             method: "PATCH",
             headers: {
@@ -44,7 +41,7 @@ function Plot({plot: [plot, plotIndex], waterDry, harvestPlant, time}) {
         // console.log("In UE:",plot.water_level, plotMaturity)
         if (plot.water_level > 0.0 && plotMaturity <= 10) {
             setPlotMaturity((prevMaturity => prevMaturity + 1.0*(plot.water_level + 0.1).toFixed(1)))
-            console.log(plotMaturity, ((plot.water_level)).toString())
+            // console.log(plotMaturity, ((plot.water_level)).toString())
     }},[time])
     
 

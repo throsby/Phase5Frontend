@@ -1,7 +1,13 @@
-function StatBox() {
-    // return()
+function StatBox({states}) {
+    const [towers,setTowers] = states
+    "Statbox:",Object.values(towers).map((towerArray,i) => {
+        towerArray.map((plotsArray,j) => {
+            console.log(plotsArray)
+        })
+    })
+    
     return(
-    <div>
+    <div className="statbox">
         
     </div>
     )
