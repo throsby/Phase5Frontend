@@ -13,8 +13,8 @@ function TowerBox({time, states, setGreenhouse}) {
 
     return (
         <div style={{ "--towers": Object.keys(towers).length }} className="TowerBox">
-            <p onClick={setGreenhouse(prevState => {})}>Back to Greenhouses</p>
             <div className={"helpers"}> 
+                <button onClick={()=>{setGreenhouse(false)}}>Button</button>
                 <HarvestPlant setHarvestPlant={setHarvestPlant} harvestPlant={harvestPlant}/>
                 <WaterDry setWaterDry={setWaterDry} waterDry={waterDry} />
                 <AddTower setTowers={setTowers} />

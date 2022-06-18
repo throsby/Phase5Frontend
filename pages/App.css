@@ -172,6 +172,7 @@ h4 {
 
 div.greenhouse {
   position: absolute;
+  place-items: center;
   top: 17em;
   left: 5em;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -182,6 +183,8 @@ div.greenhouse {
   border: #b0d7d6 .02em solid;
   opacity: 90%;
   pointer-events: none;
+  z-index: -10;
+  transition: all .2s ease-in-out;
 }
 
 div.glasspane {
@@ -193,5 +196,20 @@ div.glasspane {
 }
 
 div.greenhouse:hover {
-  box-shadow: 10px 10px #b0d7d6
+  /* box-shadow: 10px 10px #b0d7d6 */
+  transform: scale(1.1);
+  border: black .1em solid;
+  background-color: #87bcbc;
+}
+
+div.tomato1 {
+  background: url("/public/Group33t1.png");
+}
+
+.tomato1 {
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+  margin: .2em;
+  height: 30%;
 }

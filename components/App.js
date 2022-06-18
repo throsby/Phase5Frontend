@@ -22,14 +22,15 @@ function App() {
 
   useEffect(() => {
     async function fetchData() {
-       let req = await fetch("http://localhost:3000/towerplots/")
-       let res = await req.json()
-       console.log("Towers:",res)
-       setTowers(res)
-       }
-       fetchData()
-   }, [])
-
+      let req = await fetch("http://localhost:3000/towerplots/")
+      let res = await req.json()
+      console.log("Towers:",res)
+      setTowers(res)
+      }
+      fetchData()
+  }, [])
+  // console.log(greenhouse)
+  
   return (
     <div className="App">
       <Header />
