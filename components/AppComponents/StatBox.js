@@ -1,14 +1,9 @@
-function StatBox({states}) {
-    // const [towers,setTowers] = states
-    // "Statbox:",Object.values(towers).map((towerArray,i) => {
-    //     towerArray.map((plotsArray,j) => {
-    //         console.log(plotsArray)
-    //     })
-    // })
+function StatBox({states, setStatboxVisible}) {
+
     
     return(
     <div className="statbox">
-        
+        <b className="x" onClick={()=>{setStatboxVisible(false)}}>x</b>
     </div>
     )
 }

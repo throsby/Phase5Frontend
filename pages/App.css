@@ -1,9 +1,12 @@
 * {
   margin: 0;
   padding: 0;
+  /* overflow-x: hidden; */
 }
 
 .Header {
+  display: flex;
+  flex-direction: column;
   vertical-align: middle;
   background-color: #ccd8f4;
   height: max(200px, 20vh);
@@ -21,6 +24,11 @@
   transition: .5s;
 }
 
+.Header > div {
+  position: relative;
+  /* display: block; */
+}
+
 .TowerBox {
   display: flex;
   flex-direction: row;
@@ -34,7 +42,6 @@
   height: 60vh;
 }
 
-
 .TowerStack {
   border: black solid 1px;
   border-radius: 5px;
@@ -46,26 +53,22 @@
 }
 
 .helpers {
+  display: flex;
   position: relative;
-  top: 140px;
+  justify-content: space-evenly;
+  flex-direction: column;
 }
 
 .Plot {
   /* Total leg-length is 35px + 4px + 30px = 70px */
   height: 35px;
   width: 35px;
-  /* background-color: #618ffb; */
-  /* background-color: white; */
-  /* border-radius: 25px 10px 3px 3px; */
   border: 1px solid #618ffb;
-  /* margin: 4px 0px 4px 4px; */
   padding: 15px;
   display: flex;
   flex-direction: row;
   justify-items: center;
   align-items: center;
-  position: relative;
-  /* bottom: ; */
 }
 
 .Plot.wateringcan:hover {
@@ -99,7 +102,7 @@ h4 {
   width: 35.5px;
   background-color: #618ffb;
   position: relative;
-  top: 20px;
+  /* top: 20px; */
   text-align: center;
   border-radius: 100%;  
   border: 1px solid black;
@@ -116,7 +119,6 @@ h4 {
   width: 35.5px;
   background-color: #618ffb;
   position: relative;
-  top: 55px;
   text-align: center;
   border-radius: 100%;
   border: 1px solid black;
@@ -129,13 +131,12 @@ h4 {
 }
 
 .harvest-plant {
-  position: absolute;
   height: 35.5px;
   width: 35.5px;
   border-radius: 100%;
   text-align: center;
   background-color: #ccd8f4;
-  top: -120px;
+  /* top: 0px; */
   border: 1px solid black;
 }
 
@@ -146,14 +147,14 @@ h4 {
 }
 
 .water-dry {
-  position: absolute;
+  
   height: 35.5px;
   width: 35.5px;
   border-radius: 100%;
   text-align: center;
   background-color: #ccd8f4;
   /* left: -55px;*/
-  top: -50px;
+  /* top: 50px; */
   /* top: 100%; */
   border: 1px solid black;
 }
@@ -170,29 +171,44 @@ h4 {
   top: 435px;
 }
 
-div.greenhouse {
+.greenhouse-box {
   position: absolute;
+  top: 20em;
+  left: 5em;
+  display: flex;
+  flex-direction: row;
+}
+
+div.greenhouse {
+  /* position: static; */
   place-items: center;
   top: 17em;
   left: 5em;
+  margin-right: 1em;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  height: 14.1em;
+  height: 14.2em;
   width: 25em;
   display: grid;
   background-color: #b0d7d6;
   border: #b0d7d6 .02em solid;
   opacity: 90%;
   pointer-events: none;
-  z-index: -10;
+  /* z-index: -10; */
   transition: all .2s ease-in-out;
+  overflow: hidden;
 }
 
 div.glasspane {
+  display: flex;
+  flex-direction: column;
   height: 7em;
   width: 3em;
   pointer-events: auto;
   cursor: pointer;
   border: black .05em solid;
+  justify-content: space-around;
+  align-items: center;
+  
 }
 
 div.greenhouse:hover {
@@ -208,8 +224,41 @@ div.tomato1 {
 
 .tomato1 {
   display: flex;
+  /* z-index: -10; */
   /* justify-content: center; */
   /* align-items: center; */
   margin: .2em;
   height: 30%;
+}
+
+.statbox {
+  position: absolute;
+  top: 20em;
+  left: 60em;
+  height: 25em;
+  width: 20em;
+  border: black .1em solid;
+  border-radius: 2em;
+}
+
+.statbox-set {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+  height: 2em;
+  width: 2em;
+  border-radius: 1em;
+  border: black .1em solid;
+}
+
+.x {
+  position: relative;
+  top: 1em;
+  left: 1em;
+}
+
+.x:hover {
+  cursor: pointer;
 }

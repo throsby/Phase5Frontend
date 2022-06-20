@@ -1,4 +1,4 @@
-function AddTower({ setTowers }) {
+function AddTower({ currentGreenhouse, setTowers }) {
 
     async function createTower() {
         let config = {

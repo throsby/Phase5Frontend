@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 
-function SubtractTower({ setTowers }) {
+function SubtractTower({currentGreenhouse , setTowers }) {
 
     async function deleteTower() {
         
