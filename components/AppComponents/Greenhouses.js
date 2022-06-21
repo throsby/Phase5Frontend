@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import Greenhouse from "./Greenhouse"
 
 function Greenhouses({greenhouses, setCurrentGreenhouse}) {

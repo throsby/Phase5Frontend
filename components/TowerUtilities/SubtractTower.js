@@ -10,9 +10,9 @@ function SubtractTower({currentGreenhouse , setTowers }) {
                 "Content-Type": "application/json"
             }
         }
-        let req = await fetch("http://localhost:3000/towers", config)
+        let req = await fetch(`http://localhost:3000/towers/${currentGreenhouse.id}`, config)
         let res = await req.json()
-        // console.log(res)
+        console.log("Subtracted:",res)
         // setTowers((prevTowers) => {return Object.assign(prevTowers, res)})
         setTowers((prevTowers) => {
             return {...res}
@@ -20,7 +20,7 @@ function SubtractTower({currentGreenhouse , setTowers }) {
     }
 
     return (
-        <div className="SubtractTower">
+        <div className="DarkBlueHelper">
             <h2 onClick={deleteTower}>-</h2>
         </div>
     )

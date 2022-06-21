@@ -24,8 +24,9 @@
   transition: .5s;
 }
 
-.Header > div {
+.Header > div,span {
   position: relative;
+
   /* display: block; */
 }
 
@@ -50,6 +51,16 @@
   align-content: space-around;
   justify-content: center;
   position: relative;
+}
+
+.Plot:nth-child(even){
+  border-radius: 5px 25px 3px 3px;
+  margin: 4px 8px 4px 2px;
+}
+
+.Plot:nth-child(odd){
+  border-radius: 25px 5px 3px 3px; 
+  margin: 4px 2px 4px 8px;
 }
 
 .helpers {
@@ -97,34 +108,17 @@ h4 {
   background-color: rgb(78, 130, 1);
 }
 
-.AddTower {
+.DarkBlueHelper {
   height: 35.5px;
   width: 35.5px;
   background-color: #618ffb;
   position: relative;
-  /* top: 20px; */
   text-align: center;
   border-radius: 100%;  
   border: 1px solid black;
 }
 
-.AddTower:hover {
-  cursor: pointer;
-  background-color: #ccd8f4;
-  transition: .5s;
-}
-
-.SubtractTower {
-  height: 35.5px;
-  width: 35.5px;
-  background-color: #618ffb;
-  position: relative;
-  text-align: center;
-  border-radius: 100%;
-  border: 1px solid black;
-}
-
-.SubtractTower:hover {
+.DarkBlueHelper:hover {
   cursor: pointer;
   background-color: #ccd8f4;
   transition: .5s;
@@ -176,7 +170,7 @@ h4 {
   top: 20em;
   left: 5em;
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row; */
 }
 
 div.greenhouse {
@@ -186,49 +180,43 @@ div.greenhouse {
   left: 5em;
   margin-right: 1em;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  height: 14.2em;
-  width: 25em;
+  height: 14.5em;
+  width: 25.2em;
   display: grid;
-  background-color: #b0d7d6;
+  background-color: rgba(176, 215, 214, .6);
   border: #b0d7d6 .02em solid;
-  opacity: 90%;
-  pointer-events: none;
-  /* z-index: -10; */
+  z-index: auto;
   transition: all .2s ease-in-out;
-  overflow: hidden;
 }
 
 div.glasspane {
   display: flex;
   flex-direction: column;
-  height: 7em;
+  height: 7.1em;
   width: 3em;
   pointer-events: auto;
   cursor: pointer;
   border: black .05em solid;
   justify-content: space-around;
   align-items: center;
-  
+  z-index: -5;
 }
 
 div.greenhouse:hover {
-  /* box-shadow: 10px 10px #b0d7d6 */
   transform: scale(1.1);
-  border: black .1em solid;
-  background-color: #87bcbc;
+  border: black .2em solid;
+  background-color: rgba(176, 215, 214, .6);
 }
 
-div.tomato1 {
-  background: url("/public/Group33t1.png");
+div.greenhouse:hover .glasspane{
+  border: black .08em solid;
 }
 
-.tomato1 {
+.tomato {
+  pointer-events: none;
   display: flex;
-  /* z-index: -10; */
-  /* justify-content: center; */
-  /* align-items: center; */
-  margin: .2em;
-  height: 30%;
+  z-index: -10;
+  height: 28%;
 }
 
 .statbox {

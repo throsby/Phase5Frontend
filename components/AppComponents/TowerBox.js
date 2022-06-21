@@ -4,6 +4,7 @@ import AddTower from "../TowerUtilities/AddTower"
 import SubtractTower from "../TowerUtilities/SubtractTower"
 import WaterDry from "../TowerUtilities/WaterDry"
 import HarvestPlant from "../TowerUtilities/HarvestPlant"
+import HomeButton from "../TowerUtilities/HomeButton"
 
 
 function TowerBox({time, states, setCurrentGreenhouse, currentGreenhouse}) {
@@ -12,15 +13,14 @@ function TowerBox({time, states, setCurrentGreenhouse, currentGreenhouse}) {
     const [harvestPlant, setHarvestPlant] = useState(true)
 
     return (
-        <div style={{ "--towers": Object.keys(towers).length }} className="TowerBox">
-            <div className={"helpers"}> 
-                <button onClick={()=>{setCurrentGreenhouse(undefined)}}>Button</button>
+        <div className="TowerBox">
+            <div className="helpers">
+                <HomeButton setCurrentGreenhouse={setCurrentGreenhouse}/>
                 <HarvestPlant setHarvestPlant={setHarvestPlant} harvestPlant={harvestPlant}/>
                 <WaterDry setWaterDry={setWaterDry} waterDry={waterDry} />
                 <AddTower currentGreenhouse={currentGreenhouse} setTowers={setTowers} />
                 <SubtractTower currentGreenhouse={currentGreenhouse} setTowers={setTowers} />
             </div>
-            {/* {currentGreenhouse} */}
             {Object.values(towers).map((tower,i) => {
                 // {console.log("gosh",tower)}
                 return <Tower key={i} tower={tower} waterDry={waterDry} harvestPlant={harvestPlant} time={time}/>

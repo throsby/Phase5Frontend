@@ -30,22 +30,21 @@ function App() {
 
   useEffect(() => {
     async function fetchData() {
-      let req = await fetch("http://localhost:3000/towerplots/")
+      let req = await fetch(`http://localhost:3000/towerplots/${currentGreenhouse?.id}`)
       let res = await req.json()
       console.log("Towers:",res)
       setTowers(res)
       }
       fetchData()
   }, [currentGreenhouse])
-  // console.log(greenhouses)
-  
+
   return (
     <div className="App">
       <Header setStatboxVisible={setStatboxVisible}/>
-      {currentGreenhouse !== undefined ? <TowerBox currentGreenhouse={currentGreenhouse} time={time} states={[towers,setTowers]} setCurrentGreenhouse={setCurrentGreenhouse}/> : <Greenhouses greenhouses={greenhouses} setCurrentGreenhouse={setCurrentGreenhouse}/>}
+      {currentGreenhouse?.nickname !== undefined ? <TowerBox currentGreenhouse={currentGreenhouse} time={time} states={[towers,setTowers]} setCurrentGreenhouse={setCurrentGreenhouse}/> : <Greenhouses greenhouses={greenhouses} setCurrentGreenhouse={setCurrentGreenhouse}/>}
       {statboxVisible ? <StatBox setStatboxVisible={setStatboxVisible} states={[towers,setTowers]}/> : null}
     </div>
   );
 }
- 
+
 export default App;
