@@ -8,16 +8,18 @@ function App() {
 
   const [greenhouses, setGreenhouses] = useState({})
   const [towers, setTowers] = useState({})
-  const [time, setTime] = useState(0)
+  const [time, setTime] = useState(120)
+  
   const [statboxVisible, setStatboxVisible] = useState(false)
   const [currentGreenhouse, setCurrentGreenhouse] = useState({})
+  const [gameStart, setGameStart] = useState(0)
 
   useEffect(()=>{
     let interval = setInterval(()=> {
-        setTime(seconds => seconds + 1)
+        setTime(seconds => seconds - 1)
     }, 1000)
     return () => clearInterval(interval)
-  },[])
+  },[gameStart])
 
   useEffect(()=> {
     async function fetchGreenhouses(){
@@ -40,9 +42,9 @@ function App() {
   
   return (
     <div className="App">
-      <Header setStatboxVisible={setStatboxVisible}/>
+      <Header setGameStart={setGameStart} setTime={setTime} time={time} setStatboxVisible={setStatboxVisible}/>
       {currentGreenhouse?.nickname !== undefined ? <TowerBox currentGreenhouse={currentGreenhouse} time={time} states={[towers,setTowers]} setCurrentGreenhouse={setCurrentGreenhouse}/> : <Greenhouses greenhouses={greenhouses} setCurrentGreenhouse={setCurrentGreenhouse}/>}
-      {statboxVisible ? <StatBox setStatboxVisible={setStatboxVisible} states={[towers,setTowers]}/> : null}
+      {/* {statboxVisible ? <StatBox setStatboxVisible={setStatboxVisible} states={[towers,setTowers]}/> : null} */}
     </div>
   );
 }
