@@ -1,9 +1,13 @@
 
-function WaterDry({ setWaterDry , waterDry }) {
+function WaterDry({ setWaterDry , waterDry, setCurrentCursorFunction }) {
 
+    function handleClick(){
+        setWaterDry(!waterDry)
+        setCurrentCursorFunction({"waterDry":!waterDry})
+    }
     
     return(
-        <div className={"water-dry"} onClick={()=>{setWaterDry(!waterDry)}}> 
+        <div className={"water-dry"} onClick={handleClick}> 
             {waterDry ? <h3>⛲️</h3> : <h3>🧪</h3>} 
         </div>
     )

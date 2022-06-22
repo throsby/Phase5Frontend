@@ -1,13 +1,13 @@
 import Plot from "./PlotComponents/Plot"
 
 
-function Tower({tower, waterDry, harvestPlant, time}) {
+function Tower({tower, waterDry, harvestPlant, time, currentCursorFunction}) {
 
-    // console.log(tower)
-    return ( 
+    
+    return (
         <div className={`TowerStack`}>
-            {Object.values(tower).map((plot,i) => {
-                return <Plot key={i} plot={[plot, i]} waterDry={waterDry} harvestPlant={harvestPlant}
+            {tower[0].map((plot,i) => {
+                return <Plot currentCursorFunction={currentCursorFunction} key={i} plot={[plot, i]} waterDry={waterDry} harvestPlant={harvestPlant}
                 time={time}/>
             })}
         </div>

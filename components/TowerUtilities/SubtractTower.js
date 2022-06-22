@@ -3,7 +3,6 @@ import { useEffect } from "react"
 function SubtractTower({currentGreenhouse , setTowers }) {
 
     async function deleteTower() {
-        
         let config = {
             method: "DELETE",
             headers: {
@@ -12,11 +11,7 @@ function SubtractTower({currentGreenhouse , setTowers }) {
         }
         let req = await fetch(`http://localhost:3000/towers/${currentGreenhouse.id}`, config)
         let res = await req.json()
-        console.log("Subtracted:",res)
-        // setTowers((prevTowers) => {return Object.assign(prevTowers, res)})
-        setTowers((prevTowers) => {
-            return {...res}
-        })
+        setTowers(res)
     }
 
     return (

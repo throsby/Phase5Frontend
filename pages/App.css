@@ -64,6 +64,7 @@
 }
 
 .helpers {
+  height: 288px;
   display: flex;
   position: relative;
   justify-content: space-evenly;
@@ -84,13 +85,27 @@
 
 .Plot.wateringcan:hover {
   cursor: url(../public/Watering\ Can18px.png), pointer;
+  /* cursor: pointer; */
   background: #90a8df;
   transition: all 1s;
 }
 
 .Plot.sample:hover {
-  cursor: url(../public/Dropper17px.png),pointer;
+  cursor: url(../public/Dropper17px.png), pointer;
+  /* cursor: pointer; */
   background: #90a8df;
+  transition: all 1s;
+}
+
+.Plot.seedling:hover{
+  cursor: url(../public/seedling.png), pointer;
+  background: #a1df90;
+  transition: all 1s;
+}
+
+.Plot.harvest:hover{
+  cursor: url(../public/open-glove.png), pointer;
+  background: #a1df90;
   transition: all 1s;
 }
 
@@ -141,15 +156,11 @@ h4 {
 }
 
 .water-dry {
-  
   height: 35.5px;
   width: 35.5px;
   border-radius: 100%;
   text-align: center;
   background-color: #ccd8f4;
-  /* left: -55px;*/
-  /* top: 50px; */
-  /* top: 100%; */
   border: 1px solid black;
 }
 

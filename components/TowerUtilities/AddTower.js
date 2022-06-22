@@ -12,7 +12,7 @@ function AddTower({ currentGreenhouse, setTowers }) {
         // console.log(res)
         // setTowers((prevTowers) => {return Object.assign(prevTowers, res)})
         console.log("Added Tower: ",res)
-        setTowers((prevTowers) => { return {...prevTowers, ...res} })
+        setTowers(res)
     }
 
     return (
