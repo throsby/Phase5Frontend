@@ -1,4 +1,4 @@
-function StatBox({states, setStatboxVisible}) {
+function StatBox({states}) {
 
     
     return(

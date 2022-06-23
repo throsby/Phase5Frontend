@@ -5,6 +5,8 @@ function Plot({plot: [plot, plotIndex], waterDry, harvestPlant, time, currentCur
     const [plotState, setPlotState] = useState(plot)
     const [plotMaturity, setPlotMaturity] = useState(0)
     const [image, setImage] = useState([])
+    const [startTime, setStartTime] = useState(0)
+
 
     function onDragStartHandler(ev) {
         // console.log("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
@@ -23,7 +25,7 @@ function Plot({plot: [plot, plotIndex], waterDry, harvestPlant, time, currentCur
         // document.getElementById("selection").style.cursor = url("../../public/grab-glove.png")
         // console.log(ev.target)
         // ev.target.style.cursor = url("../public/grab-glove.png"), "grabbing"; 
-        console.log(ev.target)
+        // console.log(ev.target)
         if(ev.target.classList[0] === "Plot"){
             ev.target.setAttribute("id", "dropzone")
         }
@@ -32,8 +34,8 @@ function Plot({plot: [plot, plotIndex], waterDry, harvestPlant, time, currentCur
         }
         // ev.dataTransfer.effectAllowed = "move";
     }
-    
-    function onDragExitHandler(ev){
+
+    function onDragExitHandler(){
         let dropzone = document.getElementById("dropzone")  
         dropzone.removeAttribute("id")
     }
@@ -48,7 +50,9 @@ function Plot({plot: [plot, plotIndex], waterDry, harvestPlant, time, currentCur
         let selection = document.getElementById("selection")
         if (dropzone.childNodes.length < 2 ){            
             if (ev.target.classList[0] === "Plot"){
-                selection.src=plotState.plot_number%2==1 ? "plant-0-right.png" : "plant-0-left.png"
+                console.log(startTime)
+                console.log(time)
+                selection.src=plotState.plot_number%2==1 ? `plant-${plotMaturity}-right.png` : `plant-${plotMaturity}-left.png`
                 ev.target.append(selection);
             }
             else {
@@ -57,27 +61,22 @@ function Plot({plot: [plot, plotIndex], waterDry, harvestPlant, time, currentCur
         }
         else {
             return false
-        }
+        }        
         
-        
-        // console.log(dropzone)
-        // console.log(selection)
         dropzone.removeAttribute("id")
         selection.removeAttribute("id")
-        
     }
     
     function handleClick(e){
         Object.keys(currentCursorFunction)[0] === "waterDry" ? 
             (currentCursorFunction["waterDry"] ? 
                     waterPlants()
-                : 
-                    
+                :
                     takeWaterSample())
         :
             (currentCursorFunction["harvestPlant"] ? 
-                    plantPlot()
-                : 
+                    plantPlot(e)
+                :
                     console.log("Harvest"))
     }
     
@@ -111,29 +110,40 @@ function Plot({plot: [plot, plotIndex], waterDry, harvestPlant, time, currentCur
         setPlotState(res)
     }
     
-    async function plantPlot(){
-        if (image.length = 0 ){
-        setImage(<img draggable={true} onDragStart={onDragStartHandler} src={plotState.plot_number%2==1 ? "plant-0-right.png" : "plant-0-left.png"}></img>)}
-        else {
-            setImage(prevState => [...prevState,<img draggable={true} onDragStart={onDragStartHandler} src={plotState.plot_number%2==1 ? "plant-0-right.png" : "plant-0-left.png"}></img> ])
+    async function plantPlot(e){
+        console.log(e)
+        if (image.length === 0 ){
+            setStartTime(time)
+            setImage(<img draggable={true} onDragStart={onDragStartHandler} src={plotState.plot_number%2==1 ? `plant-${plotMaturity}-right.png` : `plant-${plotMaturity}-left.png`}></img>)
         }
+        console.log(image)
+        // else {
+        //     setImage(prevState => [...prevState,<img draggable={true} onDragStart={onDragStartHandler} src={plotState.plot_number%2==1 ? "plant-0-right.png" : "plant-0-left.png"}></img> ])
+        // }
     }
 
-
     useEffect(() => {
-        // console.log("In UE:",plot.water_level, plotMaturity)
-        if (plotState.water_level > 0.0 && plotMaturity <= 10) {
-            // setPlotMaturity((prevMaturity => prevMaturity + 1.0*(plotState.water_level + 0.1).toFixed(1)))
-            // console.log(plotMaturity, ((plot.water_level)).toString())
+        if (time > 0){
+            if (startTime-time > 50 ){
+                setImage(<img draggable={true} onDragStart={onDragStartHandler} src={plotState.plot_number%2==1 ? `plant-${4}-right.png` : `plant-${4}-left.png`}></img>)
+            }
+            else if (startTime-time > 40 ){
+                setImage(<img draggable={false} onDragStart={onDragStartHandler} src={plotState.plot_number%2==1 ? `plant-${3}-right.png` : `plant-${3}-left.png`}></img>)
+            }
+            else if (startTime-time > 30 ){
+                setImage(<img draggable={false} onDragStart={onDragStartHandler} src={plotState.plot_number%2==1 ? `plant-${2}-right.png` : `plant-${2}-left.png`}></img>)
+            }
+            else if (startTime-time > 20 ){
+                setImage(<img draggable={false} onDragStart={onDragStartHandler} src={plotState.plot_number%2==1 ? `plant-${1}-right.png` : `plant-${1}-left.png`}></img>)
+            }
+            else if (startTime-time > 10 ){
+                setImage(<img draggable={false} onDragStart={onDragStartHandler} src={plotState.plot_number%2==1 ? `plant-${0}-right.png` : `plant-${0}-left.png`}></img>)
+            }
         }
-        setPlotMaturity()
+        else {
+            return
+        }
     },[time])
-
-    useEffect(()=> {
-
-
-
-    }, [plotState.water_level])
 
     let cursorValue = ""
     cursorValue = Object.keys(currentCursorFunction)[0] === "waterDry" ?
@@ -142,6 +152,7 @@ function Plot({plot: [plot, plotIndex], waterDry, harvestPlant, time, currentCur
 
     let popGreen = plotMaturity >= 10 ? "green-me" : ""
     // console.log(plotState)
+
     return(
         <div onDragLeave={onDragExitHandler} onDrop={drop} onDragOver={onDragOverHandler} onClick={handleClick} className={`Plot plot-${plotState.plot_number} ${cursorValue} ${popGreen}`}>
             {image}
@@ -150,6 +161,7 @@ function Plot({plot: [plot, plotIndex], waterDry, harvestPlant, time, currentCur
             {/* h4 has the hover css */}
             {/* <h6>{plotState.plot_number} - {plotState.water_level.toFixed(1)}</h6> */}
             {/* <h6>{plotMaturity}</h6> */}
+            {/* <h6>{plotMaturity} {startTime-time}</h6> */}
             {(cursorValue === "wateringcan" || cursorValue === "sample") && <h4>{plotState.water_level.toFixed(1)}</h4>}
             {/* {cursorValue === "seedling" && <h4>{time}</h4>}
             {cursorValue === "harvest" && <h4>{time}</h4>} */}

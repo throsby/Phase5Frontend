@@ -4,6 +4,11 @@
   overflow-inline: hidden;
 }
 
+body {
+  width: 100vw;
+  overflow: hidden;
+}
+
 .Header {
   display: flex;
   flex-direction: column;
@@ -256,8 +261,14 @@ div.greenhouse:hover .glasspane{
 }
 
 .statbox {
+  visibility: hidden;
+  transition: visibility 2s ease-in;
+}
+
+.statbox-visible {
+  visibility: visible;
   position: absolute;
-  top: 20em;
+  top: -5em;
   left: 60em;
   height: 25em;
   width: 20em;
@@ -289,13 +300,11 @@ div.greenhouse:hover .glasspane{
 
 .marketbox-container{
   position: relative;
-  height: 10em;
-  left: 50em;
-  top: -40em;
-  animation-name: driveintosunset;
-  animation-delay: 5s;
-  /* transition: driveintosunset 2s ease-out; */
-  /* transition-delay: 5s; */
+  height: 45em;
+  left: 60em;
+  top: -35em;
+  transition: left 8s ease-out;
+  /* background-color:#618ffb; */
 }
 
 .marketbox {
@@ -308,24 +317,16 @@ div.greenhouse:hover .glasspane{
   margin: .5em;
   outline:  black .1em solid;
   border: rgb(176, 215, 214) .5em solid;
+  background-color: rgb(135,181,188);
 }
 
 .truck {
   position: relative;
   top: 0em;
   left: 0em;
-  height: 150%;
+  height: 35%;
 }
 
-
-
-
-@keyframes driveintosunset {
-  from {
-    transform: translateX(0em);
-  }
-
-  to {
-    transform: translateX(10em);
-  }
+.gameover {
+  left: 300vw;
 }

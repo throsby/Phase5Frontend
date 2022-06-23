@@ -1,5 +1,8 @@
-export default function MarketBox(){
-    
+import { useEffect } from "react";
+
+export default function MarketBox({time}){
+    let timerTesting = 0
+
     function onDragOverHandler(ev) {
         ev.preventDefault();
         
@@ -35,13 +38,20 @@ export default function MarketBox(){
         selection.removeAttribute("id")
     }
 
+    let mbc = document.querySelector(".marketbox-container")
 
+    useEffect(()=>{
+        if (time === 0){
+            // setStatboxVisible(true)
+        }
+    },[time])
 
-return (<div className="marketbox-container">
+return (<>
+    { <div className={`marketbox-container ${time < timerTesting ? "gameover" : ""}`}>
         <div onDragLeave={onDragExitHandler} onDrop={drop} onDragOver={onDragOverHandler} className="marketbox">
 
         </div>
         <img className="truck" src={"truck2.png"}/>
-    </div>)
+    </div>}</>)
 
 }
