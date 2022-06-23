@@ -5,6 +5,7 @@ import SubtractTower from "../TowerUtilities/SubtractTower"
 import WaterDry from "../TowerUtilities/WaterDry"
 import HarvestPlant from "../TowerUtilities/HarvestPlant"
 import HomeButton from "../TowerUtilities/HomeButton"
+import MarketBox from "./MarketBox"
 
 function TowerBox({time, states, setCurrentGreenhouse, currentGreenhouse}) {
     const [towers, setTowers] = states
@@ -27,6 +28,9 @@ function TowerBox({time, states, setCurrentGreenhouse, currentGreenhouse}) {
             {towers[currentGreenhouse.id].map((tower,i) => {
                     return <Tower currentCursorFunction={currentCursorFunction} key={i} tower={tower} waterDry={waterDry} harvestPlant={harvestPlant} time={time}/>
             })}
+            <>
+                <MarketBox />
+            </>
         </div>
     )
 }

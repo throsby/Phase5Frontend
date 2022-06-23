@@ -1,9 +1,8 @@
 * {
   margin: 0;
   padding: 0;
+  overflow-inline: hidden;
 }
-
-
 
 .Header {
   display: flex;
@@ -31,11 +30,13 @@
 
 .TowerBox {
   display: flex;
+  position: relative;
   flex-direction: row;
   align-content: space-between;
   flex-wrap: wrap;
   max-width: calc(13 * 73.5px);
   gap: 2%;
+  top: 5em;
   margin: 5% 0% 0% 8%;
   border: 2%;
   width: 100%;
@@ -132,7 +133,6 @@
 #selection {
   cursor: url("../public/grab-glove.png"), pointer;
 }
-
 
 h4 {
   display: none;
@@ -285,4 +285,47 @@ div.greenhouse:hover .glasspane{
 
 .x:hover {
   cursor: pointer;
+}
+
+.marketbox-container{
+  position: relative;
+  height: 10em;
+  left: 50em;
+  top: -40em;
+  animation-name: driveintosunset;
+  animation-delay: 5s;
+  /* transition: driveintosunset 2s ease-out; */
+  /* transition-delay: 5s; */
+}
+
+.marketbox {
+  position: relative;
+  top: 8em;
+  left: .5em;
+  height: 20em;
+  width: 15em;
+  border-radius: 1em;
+  margin: .5em;
+  outline:  black .1em solid;
+  border: rgb(176, 215, 214) .5em solid;
+}
+
+.truck {
+  position: relative;
+  top: 0em;
+  left: 0em;
+  height: 150%;
+}
+
+
+
+
+@keyframes driveintosunset {
+  from {
+    transform: translateX(0em);
+  }
+
+  to {
+    transform: translateX(10em);
+  }
 }

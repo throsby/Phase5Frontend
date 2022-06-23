@@ -4,7 +4,7 @@ function Plot({plot: [plot, plotIndex], waterDry, harvestPlant, time, currentCur
     // console.log("Plot render")
     const [plotState, setPlotState] = useState(plot)
     const [plotMaturity, setPlotMaturity] = useState(0)
-    const [image, setImage] = useState(null)
+    const [image, setImage] = useState([])
 
     function onDragStartHandler(ev) {
         // console.log("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
@@ -22,8 +22,9 @@ function Plot({plot: [plot, plotIndex], waterDry, harvestPlant, time, currentCur
         // ev.dataTransfer.dropEffect = "copy";
         // document.getElementById("selection").style.cursor = url("../../public/grab-glove.png")
         // console.log(ev.target)
-        ev.target.style.class = ""
-        if(ev.target.classList[0]==="Plot"){
+        // ev.target.style.cursor = url("../public/grab-glove.png"), "grabbing"; 
+        console.log(ev.target)
+        if(ev.target.classList[0] === "Plot"){
             ev.target.setAttribute("id", "dropzone")
         }
         else {
@@ -32,7 +33,7 @@ function Plot({plot: [plot, plotIndex], waterDry, harvestPlant, time, currentCur
         // ev.dataTransfer.effectAllowed = "move";
     }
     
-    function onDragExitHandler(ev){      
+    function onDragExitHandler(ev){
         let dropzone = document.getElementById("dropzone")  
         dropzone.removeAttribute("id")
     }
@@ -45,7 +46,7 @@ function Plot({plot: [plot, plotIndex], waterDry, harvestPlant, time, currentCur
         let dropzone = document.getElementById("dropzone")
         console.log(dropzone.childNodes.length)
         let selection = document.getElementById("selection")
-        if (dropzone.childNodes.length < 2){            
+        if (dropzone.childNodes.length < 2 ){            
             if (ev.target.classList[0] === "Plot"){
                 selection.src=plotState.plot_number%2==1 ? "plant-0-right.png" : "plant-0-left.png"
                 ev.target.append(selection);
@@ -111,7 +112,11 @@ function Plot({plot: [plot, plotIndex], waterDry, harvestPlant, time, currentCur
     }
     
     async function plantPlot(){
-        setImage(<img draggable={true} onDragStart={onDragStartHandler} src={plotState.plot_number%2==1 ? "plant-0-right.png" : "plant-0-left.png"}></img>)
+        if (image.length = 0 ){
+        setImage(<img draggable={true} onDragStart={onDragStartHandler} src={plotState.plot_number%2==1 ? "plant-0-right.png" : "plant-0-left.png"}></img>)}
+        else {
+            setImage(prevState => [...prevState,<img draggable={true} onDragStart={onDragStartHandler} src={plotState.plot_number%2==1 ? "plant-0-right.png" : "plant-0-left.png"}></img> ])
+        }
     }
 
 
