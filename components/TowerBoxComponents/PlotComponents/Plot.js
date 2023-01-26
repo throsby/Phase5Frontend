@@ -124,19 +124,19 @@ function Plot({plot: [plot, plotIndex], waterDry, harvestPlant, time, currentCur
 
     useEffect(() => {
         if (time > 0){
-            if (startTime-time > 50 ){
+            if (startTime-time > 40 ){
                 setImage(<img draggable={true} onDragStart={onDragStartHandler} src={plotState.plot_number%2==1 ? `plant-${4}-right.png` : `plant-${4}-left.png`}></img>)
             }
-            else if (startTime-time > 40 ){
+            else if (startTime-time > 35 ){
                 setImage(<img draggable={false} onDragStart={onDragStartHandler} src={plotState.plot_number%2==1 ? `plant-${3}-right.png` : `plant-${3}-left.png`}></img>)
             }
             else if (startTime-time > 30 ){
                 setImage(<img draggable={false} onDragStart={onDragStartHandler} src={plotState.plot_number%2==1 ? `plant-${2}-right.png` : `plant-${2}-left.png`}></img>)
             }
-            else if (startTime-time > 20 ){
+            else if (startTime-time > 25 ){
                 setImage(<img draggable={false} onDragStart={onDragStartHandler} src={plotState.plot_number%2==1 ? `plant-${1}-right.png` : `plant-${1}-left.png`}></img>)
             }
-            else if (startTime-time > 10 ){
+            else if (startTime-time > 15 ){
                 setImage(<img draggable={false} onDragStart={onDragStartHandler} src={plotState.plot_number%2==1 ? `plant-${0}-right.png` : `plant-${0}-left.png`}></img>)
             }
         }
