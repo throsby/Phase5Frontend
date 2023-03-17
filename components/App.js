@@ -8,7 +8,7 @@ function App() {
 
   const [greenhouses, setGreenhouses] = useState({})
   const [towers, setTowers] = useState({})
-  const [time, setTime] = useState(120)
+  const [time, setTime] = useState(100)
   
   const [statboxVisible, setStatboxVisible] = useState(false)
   const [currentGreenhouse, setCurrentGreenhouse] = useState({})
