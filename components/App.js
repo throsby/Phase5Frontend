@@ -3,6 +3,8 @@ import Header from './AppComponents/Header'
 import StatBox from './AppComponents/StatBox'
 import { useState, useEffect } from "react"
 import Greenhouses from './AppComponents/Greenhouses';
+import {Analytics} from '@vercel/analytics/react';
+
 
 function App() {
 
@@ -23,7 +25,8 @@ function App() {
 
   useEffect(()=> {
     async function fetchGreenhouses(){
-      let req = await fetch("http://localhost:3000/greenhouses")
+
+      let req = await fetch(`http://localhost:3000/greenhouses`)
       let res = await req.json()
       setGreenhouses(res)
     }
@@ -45,6 +48,7 @@ function App() {
       <Header setGameStart={setGameStart} setTime={setTime} time={time} setStatboxVisible={setStatboxVisible}/>
       {currentGreenhouse?.nickname !== undefined ? <TowerBox currentGreenhouse={currentGreenhouse} time={time} states={[towers,setTowers]} setCurrentGreenhouse={setCurrentGreenhouse} gameStates={[gameStart, setGameStart]}/> : <Greenhouses greenhouses={greenhouses} setCurrentGreenhouse={setCurrentGreenhouse}/>}
       {/* {statboxVisible ? <StatBox setStatboxVisible={setStatboxVisible} states={[towers,setTowers]}/> : null} */}
+      <Analytics />
     </div>
   );
 }
