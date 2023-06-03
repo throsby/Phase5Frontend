@@ -36,7 +36,7 @@ function App() {
 
   useEffect(() => {
     async function fetchData() {
-      let req = await fetch(`http://localhost:3000/towers`)
+      let req = await fetch(`${process.env.RUBY_BACKEND_URL}/towers`)
       let res = await req.json()
       console.log("Towers:",res)
       setTowers(res)
