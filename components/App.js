@@ -25,8 +25,9 @@ function App() {
 
   useEffect(()=> {
     async function fetchGreenhouses(){
-
-      let req = await fetch(`http://localhost:3000/greenhouses`)
+      // let req = await fetch(`http://localhost:3000/greenhouses`)
+      let req = await fetch(`${process.env.RUBY_BACKEND_URL}/greenhouses`)
+      
       let res = await req.json()
       setGreenhouses(res)
     }
