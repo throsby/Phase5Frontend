@@ -9,7 +9,7 @@ function SubtractTower({currentGreenhouse , setTowers }) {
                 "Content-Type": "application/json"
             }
         }
-        let req = await fetch(`http://localhost:3000/towers/${currentGreenhouse.id}`, config)
+        let req = await fetch(`${process.env.RUBY_BACKEND_URL}/towers/${currentGreenhouse.id}`, config)
         let res = await req.json()
         setTowers(res)
     }

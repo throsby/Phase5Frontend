@@ -87,7 +87,7 @@ function Plot({plot: [plot, plotIndex], waterDry, harvestPlant, time, currentCur
                 "Content-Type": "application/json"
             }
         }
-        let req = await fetch(`http://localhost:3000/plots/${plot.id}/water`, config)
+        let req = await fetch(`${process.env.RUBY_BACKEND_URL}/plots/${plot.id}/water`, config)
         let res = await req.json()                
         console.log("Res",res)
         setPlotState(res)
@@ -104,7 +104,7 @@ function Plot({plot: [plot, plotIndex], waterDry, harvestPlant, time, currentCur
                 "Content-Type": "application/json"
             }
         }
-        let req = await fetch(`http://localhost:3000/plots/${plot.id}/sample`, config)
+        let req = await fetch(`${process.env.RUBY_BACKEND_URL}/plots/${plot.id}/sample`, config)
         let res = await req.json()        
         console.log("Res",res)
         setPlotState(res)
