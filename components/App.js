@@ -25,6 +25,7 @@ function App() {
 
   useEffect(()=> {
     async function fetchGreenhouses(){
+      console.log(process.env)
       let req = await fetch(`${process.env.RUBY_BACKEND_URL}/greenhouses`)
       let res = await req.json()
       setGreenhouses(res)
