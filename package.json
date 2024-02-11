@@ -1,14 +1,17 @@
 {
-  "name": "nextjs-blog",
+  "name": "rubyproject",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@datadog/browser-rum": "^5.9.0",
     "@reduxjs/toolkit": "^1.9.3",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
     "@vercel/analytics": "^1.0.1",
+    "i": "^0.3.7",
     "next": "latest",
+    "npm": "^10.4.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-spring": "^9.4.5",
@@ -16,7 +19,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "dev": "next dev -p 3005",
+    "redo": "next build && npm run start",
+    "dev": "next dev -p 3001",
     "build": "next build",
     "start": "next start"
   },

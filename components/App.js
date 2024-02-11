@@ -3,8 +3,7 @@ import Header from './AppComponents/Header'
 import StatBox from './AppComponents/StatBox'
 import { useState, useEffect } from "react"
 import Greenhouses from './AppComponents/Greenhouses';
-import {Analytics} from '@vercel/analytics/react';
-
+import { Analytics } from '@vercel/analytics/react';
 
 function App() {
 
@@ -23,19 +22,23 @@ function App() {
     return () => clearInterval(interval)
   },[gameStart])
 
+
+
   useEffect(()=> {
     async function fetchGreenhouses(){
-      console.log(process.env)
-      let req = await fetch(`${process.env.RUBY_BACKEND_URL}/greenhouses`)
-      let res = await req.json()
-      setGreenhouses(res)
-    }
+        // let req = await fetch(`http://localhost:3000//greenhouses`)
+        let req = await fetch("https://cool-lake-5286.fly.dev/greenhouses")
+        let res = await req.json()
+        setGreenhouses(res)
+      }
+    
     fetchGreenhouses()
   },[])
 
   useEffect(() => {
     async function fetchData() {
-      let req = await fetch(`${process.env.RUBY_BACKEND_URL}/towers`)
+      // let req = await fetch(`http://localhost:3000/towers`)
+      let req = await fetch("https://cool-lake-5286.fly.dev/towers")
       let res = await req.json()
       console.log("Towers:",res)
       setTowers(res)
